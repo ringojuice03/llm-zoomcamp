@@ -1,0 +1,17 @@
+# First time
+docker run --name qdrant-db \
+   -p 6333:6333 -p 6334:6334 \
+   -v "$(pwd)/qdrant_storage:/qdrant/storage:z" \
+   qdrant/qdrant
+
+# After system restart
+docker start qdrant-db && docker logs qdrant-db
+
+# When done working
+docker stop qdrant-db
+
+# Access qdrant dashboard
+http://localhost:6333/dashboard
+
+# Show active docker containers
+docker ps
